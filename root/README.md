@@ -14,8 +14,5 @@ If a player reaches 0 points the game is over.
 If a player has more than 0 points they decide if they want to keep playing.
 If a player decides not to play again the game is over.
 hello
+
 ## structure
-
-
-
-This is a test From Chandler 
