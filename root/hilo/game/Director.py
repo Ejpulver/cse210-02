@@ -11,6 +11,18 @@ class Director:
         self.score = 300
         self.total_score = 0
 
+    def start_game(self):
+
+        # starts the game loop.
+
+        #Args:
+            #self(director): An instance of director
+        
+        while self.is_playing:
+            self.get_inputs()
+            self.do_updates()
+            self.do_outputs()
+
     def get_inputs(self):
         #asks the user if they choose a higher number or a lower number.
 
