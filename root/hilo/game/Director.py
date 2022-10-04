@@ -1,5 +1,5 @@
 from operator import truediv
-from game.dealer import dealer
+from game.dealer import Dealer
 
 class Director:
     # A person who directs the game.
@@ -9,29 +9,7 @@ class Director:
     def __init__(self):
         self.is_playing = True
         self.score = 300
-        self.total_score = 300
-
-    def start_game(self):
-
-        while self.is_playing:
-            self.get_inputs()
-            self.do_updates()
-            self.do_outputs()
-
-    def get_inputs(self):
-
-        pass
-
-    def do_updates(self):
-
-        pass
-
-    def do_outputs(self):
-        
-        pass
-
-
-
+        self.total_score = 0
 
     def get_inputs(self):
         #asks the user if they choose a higher number or a lower number.
@@ -69,7 +47,15 @@ class Director:
 
             values = "" 
             for i in range(len(self.card)):
+                card = self.card[i]
+                values += f"{card.value}"
+            print(f"next card was: {values}")
+            print(f"Your score is:; {self.total_score}")
+            self.is_playing == (self.score > 0)
 
+           
+
+            
 
         
 
