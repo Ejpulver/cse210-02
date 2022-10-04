@@ -15,5 +15,5 @@ If a player has more than 0 points they decide if they want to keep playing.
 If a player decides not to play again the game is over.
 hello
 
-The game is split between three files.
 ## structure
+The game is split between three files.
