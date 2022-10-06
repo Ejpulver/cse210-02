@@ -1,10 +1,16 @@
 from operator import truediv
-from game.dealer import Dealer
+from Dealer import Dealer
+#self.last_input
 
+win = False
 class Director:
+
+
     # A person who directs the game.
 
     # The responsibility of the director is to control the game.
+    
+    
     
     def __init__(self):
         self.is_playing = True
@@ -13,15 +19,14 @@ class Director:
 
     def start_game(self):
 
-        # starts the game loop.
 
-        #Args:
-            #self(director): An instance of director
-        
         while self.is_playing:
             self.get_inputs()
             self.do_updates()
+            self.play_again()
             self.do_outputs()
+
+
 
     def get_inputs(self):
         #asks the user if they choose a higher number or a lower number.
@@ -32,7 +37,29 @@ class Director:
 
         num_select=input("High or low? [h/l]")
         self.is_playing = input(num_select == "h")
-        self.is_playing = input(num_select == "l")
+
+    def win_condition(self):
+        #winner gains 100 points.
+        
+        self.score += 100
+
+    def lost_round(self):
+
+        self.score -= 75
+
+
+   
+    
+    
+    def play_again(self):
+       response = input("would you like to play again")
+       
+       if response == "Y":
+            self.is_playing = True
+        
+       else: 
+            self.is_playing = False
+        
 
     def do_updates(self):
         #draws a card
@@ -44,7 +71,7 @@ class Director:
         
         for i in range(len(self.card)):
             card = self.card
-            card.draw()
+            card.draw(i)
             self.score += card.points
         self.total_score += self.score
     
