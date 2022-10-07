@@ -43,12 +43,13 @@ class Director:
     
     def play_again(self):
         if self.is_playing:
-            response = input("would you like to play again")
+            response = input("would you like to play again: ")
 
             if response == "Y" or response =="y":
                 self.is_playing = True
             else: 
                 self.is_playing = False
+                print("Thanks for playing! see you soon!")
         
 
     def do_updates(self):
