@@ -1,8 +1,6 @@
 from operator import truediv
 from Dealer import Dealer
-#self.last_input
 
-win = False
 class Director:
 
 
@@ -15,30 +13,25 @@ class Director:
     def __init__(self):
         self.is_playing = True
         self.score = 300
-        self.total_score = 0
+        self.dealer = Dealer()
+        self.card = self.dealer.card
 
     def start_game(self):
-
-
         while self.is_playing:
             self.get_inputs()
             self.do_updates()
-            self.play_again()
             self.do_outputs()
-
-
+            self.play_again()
 
     def get_inputs(self):
         #asks the user if they choose a higher number or a lower number.
 
-
         #Args:
             #self(director):An instance of Director
-
-        num_select=input("High or low? [h/l]")
-        self.is_playing = input(num_select == "h")
-
-    def win_condition(self):
+        self.choice = input(f"The card is {self.card}.\nHigh or low? [h/l]")
+        self.choice = self.choice.lower()
+        
+    def won_round(self):
         #winner gains 100 points.
         
         self.score += 100
@@ -47,18 +40,15 @@ class Director:
 
         self.score -= 75
 
-
-   
-    
     
     def play_again(self):
-       response = input("would you like to play again")
-       
-       if response == "Y":
-            self.is_playing = True
-        
-       else: 
-            self.is_playing = False
+        if self.is_playing:
+            response = input("would you like to play again")
+
+            if response == "Y" or response =="y":
+                self.is_playing = True
+            else: 
+                self.is_playing = False
         
 
     def do_updates(self):
@@ -66,31 +56,26 @@ class Director:
         #Args
             #self(Director) An instance of Director
 
-        if not self.is_playing:
-            return
-        
-        for i in range(len(self.card)):
-            card = self.card
-            card.draw(i)
-            self.score += card.points
-        self.total_score += self.score
+        self.dealer.deal()
+
+        if self.choice == 'h' and self.dealer.card > self.card:
+            self.won_round()
+        elif self.choice =='l' and self.dealer.card < self.card:
+            self.won_round()
+        else:
+            self.lost_round()
+
+        self.card = self.dealer.card
+        self.is_playing == (self.score > 0)
     
     def do_outputs(self):
         #display results
 
         #Args:
-            #self(Director): An instance of Director
+        #self(Director): An instance of Director
 
-            if not self.is_playing:
-                return
-
-            values = "" 
-            for i in range(len(self.card)):
-                card = self.card[i]
-                values += f"{card.value}"
-            print(f"next card was: {values}")
-            print(f"Your score is:; {self.total_score}")
-            self.is_playing == (self.score > 0)
+        print(f"next card was: {self.card}")
+        print(f"Your score is: {self.score}")
 
            
 
