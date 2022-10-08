@@ -30,6 +30,8 @@ class Director:
             #self(director):An instance of Director
         self.choice = input(f"The card is {self.card}.\nHigh or low? [h/l]")
         self.choice = self.choice.lower()
+        while self.choice!= "h" and self.choice != "H"and self.choice !="l" and self.choice != "L":
+            self.choice = input(f"'{self.choice}' is not an option please type 'H', 'h', 'L' or 'l': ")
         
     def won_round(self):
         #winner gains 100 points.
@@ -44,15 +46,12 @@ class Director:
     def play_again(self):
         if self.is_playing:
             response = input("would you like to play again: ")
-            response = response.lower()
-            while response != "y" and response !="n":
-                response = input(f"'{response}' is not an option. Please type 'y' or 'n':")
 
             if response == "Y" or response =="y":
                 self.is_playing = True
             else: 
                 self.is_playing = False
-                print("Thanks for playing! see you soon!")
+                print("Thanks for playing! see you soon pal!")
         
 
     def do_updates(self):
