@@ -11,12 +11,14 @@ class Director:
     
     
     def __init__(self):
+        #sets Director's values to proper defaults.
         self.is_playing = True
         self.score = 300
         self.dealer = Dealer()
         self.card = self.dealer.card
 
     def start_game(self):
+        #starts the main game loop and continues until the user is finished
         while self.is_playing:
             self.get_inputs()
             self.do_updates()
@@ -39,11 +41,13 @@ class Director:
         self.score += 100
 
     def lost_round(self):
+        #loser loses 75 points.
 
         self.score -= 75
 
     
     def play_again(self):
+        #asks the user if they want to play again
         if self.is_playing:
             response = input("would you like to play again: ")
 
@@ -55,7 +59,7 @@ class Director:
         
 
     def do_updates(self):
-        #draws a card
+        #draws a card and determines if player won or lost round
         #Args
             #self(Director) An instance of Director
 
